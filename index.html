@@ -125,8 +125,8 @@
 
       <div class="success" id="success" hidden>
         <div class="seal" style="margin-bottom:6px"><img src="nmao-mark.png" alt=""></div>
-        <div class="big">You're in — let's gather your documents</div>
-        <p>Taking you to your secure upload page now. We've also emailed the link so you can return any time.</p>
+        <div class="big" id="succHead">You're in — let's gather your documents</div>
+        <p id="succBody">Taking you to your secure upload page now. We've also emailed the link so you can return any time.</p>
       </div>
 
       <div class="foot-note">
@@ -178,13 +178,19 @@
       headers: { "Authorization": "Bearer " + ANON, "apikey": ANON, "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     }).then(function(r){ return r.json(); }).then(function(d){
-      if (!d || !d.ok || !d.url){
+      if (!d || !d.ok || (!d.url && !d.emailed)){
         showErr((d && d.error) ? d.error : "Something went wrong. Please try again.");
         btn.disabled = false; btn.innerHTML = "Begin accreditation →";
         return;
       }
       $("form").hidden = true;
       $("success").hidden = false;
+      if (d.emailed && !d.url){
+        // Existing school on file — the secure link is emailed, never handed back.
+        $("succHead").textContent = "Check your inbox";
+        $("succBody").textContent = "This school has already started accreditation. We've emailed your secure upload link to the address on file — open it to continue.";
+        return;
+      }
       setTimeout(function(){ window.location.href = d.url; }, 1400);
     }).catch(function(){
       showErr("We couldn't reach the server. Please check your connection and try again.");
