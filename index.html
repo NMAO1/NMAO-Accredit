@@ -25,10 +25,10 @@
   header.hero{position:relative;overflow:hidden;text-align:center;padding:52px 20px 26px}
   header.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
     background:radial-gradient(80% 60% at 50% -10%, rgba(232,184,75,.16), transparent 62%)}
-  .seal{position:relative;width:76px;height:76px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center}
-  .seal::before{content:"";position:absolute;width:150%;height:150%;border-radius:50%;
-    background:radial-gradient(circle,rgba(232,184,75,.24),transparent 66%)}
-  .seal img{position:relative;width:76px;height:76px;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(0,0,0,.5))}
+  .seal{position:relative;width:fit-content;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
+  .seal::before{content:"";position:absolute;inset:-34% -22%;border-radius:50%;pointer-events:none;
+    background:radial-gradient(ellipse at center,rgba(232,184,75,.2),transparent 68%)}
+  .seal img{position:relative;width:126px;height:auto;object-fit:contain;filter:drop-shadow(0 8px 22px rgba(0,0,0,.5))}
   .eyebrow{position:relative;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:700}
   header.hero h1{position:relative;font-family:var(--serif);font-weight:600;font-size:clamp(28px,7vw,40px);line-height:1.05;margin:10px 0 0;letter-spacing:-.01em}
   header.hero p{position:relative;color:var(--muted);font-size:15.5px;max-width:34em;margin:12px auto 0}
@@ -74,7 +74,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="seal"><img src="nmao-mark.png" alt="NMAO"></div>
+    <div class="seal"><img src="nmao-crest.png" alt="NMAO"></div>
     <div class="eyebrow">National Martial Arts Organization</div>
     <h1>Apply for accreditation</h1>
     <p>Earn the NMAO seal and a public verification page families can check in seconds — verified against standards that reflect martial arts principles.</p>
@@ -124,7 +124,7 @@
       </form>
 
       <div class="success" id="success" hidden>
-        <div class="seal" style="margin-bottom:6px"><img src="nmao-mark.png" alt=""></div>
+        <div class="seal" style="margin-bottom:6px"><img src="nmao-crest.png" alt=""></div>
         <div class="big" id="succHead">You're in — let's gather your documents</div>
         <p id="succBody">Taking you to your secure upload page now. We've also emailed the link so you can return any time.</p>
       </div>
